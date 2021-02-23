@@ -15,3 +15,8 @@
 ## Feb. 21 2021
 
 1. I read through chapter 1 of Rojas' *Neural Networks: A Systematic Introduction* which went through the foundation and theory of Neural Networks.
+
+**To-Do For Next Time:**
+
+1. I plan to read Chapter 2 of *Neural Networks: A Systematic Introduction* and write out any questions I have
+2. I plan to watch the second video of 3Blue1Brown
