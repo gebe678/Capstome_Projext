@@ -186,7 +186,7 @@ The calculus behind backpropagation seems doable but is still very confusing wit
 3. Start reading about Sigmoid neurons on *Neural Networks and Deep Learning*
 
 
-# Griffins Diary
+# Griffin's Diary
 
 ## Feb. 23 2021
 
