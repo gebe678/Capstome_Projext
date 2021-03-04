@@ -6,7 +6,7 @@
 
 2. I also began watching the video series on nueral netowrks by three blue one brown. They provided a very conceptual overview on what nueral networks are and how they work.
 
-** To-Do For Next Time: **
+**To-Do For Next Time:**
 
 1. I plan on reading more in-depth on chapter 2 of [Neural Networks: A Systematic Introduction](https://page.mi.fu-berlin.de/rojas/neural/) and attempt do finish some of the exercises that are listed at the end of the chapter. I also plan on beginning to skim through chpater 3 to get an overview on the next topic: weighted Networks the perceptron.
 
@@ -19,7 +19,7 @@
 
 3. I have skimmed through chapter 3 of our textbook to get a cursory understanding on what how networks use weights to help decide which functions to use. 
 
-** To-Do For Next Time: **
+**To-Do For Next Time:**
 
 1. I plan on reading chapter 3 in depth and understanding more of the concepts described.
 
