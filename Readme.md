@@ -74,14 +74,13 @@
 
 ## Feb. 18 2021
 
-1. I watched the "3Blue1Brown" video giving a general overview of neural nets using a number classification example. Among other concepts, the video covered hidden layers and weights.
+1. I watched the first "3Blue1Brown" video giving a general overview of neural nets using a number classification example. Among other concepts, the video covered hidden layers and weights.
 2. I also read through the first chapter of [Machine Learning for Beginners: An Introduction to Neural Networks](https://victorzhou.com/blog/intro-to-neural-networks/) by Victor Zhou which covered how to assign weights and basic training of a neural net model.
 
 
 **To-Do For Next Time:**
 
 1. I plan to read Chapter 1 of *Neural Networks: A Systematic Introduction* and write out any questions I have
-
 
 
 ## Feb. 21 2021
@@ -93,6 +92,22 @@
 1. I plan to read Chapter 2 of *Neural Networks: A Systematic Introduction* and write out any questions I have
 2. I plan to watch the second video of 3Blue1Brown
 
+## Feb. 26 2021
+
+1. I read through the supplemental reading for 3Blue1Brown's series and looked over the example they reference throughout the video series.
+
+
+**To-Do For Next Time:**
+1. Continue watching the 3Blue1Brown series
+
+
+## Mar. 1 2021
+
+1. I watched the rest of the 3Blue1Brown videos (2-4) which covered a lot of the math that goes into the neural net model. This includes a lot of Calculus including the chain rule and derivates. It also went over gradient descent and hidden layers.
+
+
+**To-Do For Next Time:**
+1. Investigate some of the math that goes into the model.
 
 # Maria's Diary
 
