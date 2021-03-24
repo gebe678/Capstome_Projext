@@ -25,4 +25,6 @@
 
 2. I also plan on looking into the code described in the 2nd three blue one brown video to look at their number reconization network
 
+3. https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-to-classify-photos-of-dogs-and-cats/
+
 
