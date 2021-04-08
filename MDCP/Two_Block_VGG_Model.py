@@ -18,14 +18,17 @@ def define_model():
     
 	model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same', input_shape=(200, 200, 3)))
 	model.add(MaxPooling2D((2, 2)))
+	model.add(Dropout(.10))
     
     # added lines of code to transform the model from a one block to two block model
 	model.add(Conv2D(64, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
 	model.add(MaxPooling2D((2, 2)))
+	model.add(Dropout(.10))
     # End of the code block to transofrm the model from the one block to the two block model
     
 	model.add(Flatten())
 	model.add(Dense(128, activation='relu', kernel_initializer='he_uniform'))
+	model.add(Dropout(.50))
 	model.add(Dense(1, activation='sigmoid'))
 	# compile model
 	opt = SGD(lr=0.001, momentum=0.9)
@@ -76,7 +79,7 @@ def run_test_harness():
 	
 	# fit model
 	history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
-		validation_data=test_it, validation_steps=len(test_it), epochs=20, verbose=0)
+		validation_data=test_it, validation_steps=len(test_it), epochs=25, verbose=0)
 	# evaluate model
 	_, acc = model.evaluate_generator(test_it, steps=len(test_it), verbose=0)
 	print('> %.3f' % (acc * 100.0))

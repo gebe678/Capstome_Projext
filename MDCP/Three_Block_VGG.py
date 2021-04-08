@@ -12,15 +12,26 @@ from keras.preprocessing.image import ImageDataGenerator
 
 # define cnn model
 def define_model():
+	# The CNN model is built using Sequential() which will link a series of layers together
 	model = Sequential()
+
+	# 3 Block Model consists of 3 Blocks each containing a Conv2D and MaxPooling2D layer
+
 	model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same', input_shape=(200, 200, 3)))
 	model.add(MaxPooling2D((2, 2)))
+	# Dropout occurs at the end of each layer except the output player to prevent overfitting
+	# Basically, 10% of neurons will be dropped out from both the forward and backward phase
+	# This prevents neurons from learning based on context and their position around other neurons
+	model.add(Dropout(.10))
 	model.add(Conv2D(64, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
 	model.add(MaxPooling2D((2, 2)))
+	model.add(Dropout(.10))
 	model.add(Conv2D(128, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
 	model.add(MaxPooling2D((2, 2)))
+	model.add(Dropout(.10))
 	model.add(Flatten())
 	model.add(Dense(128, activation='relu', kernel_initializer='he_uniform'))
+	model.add(Dropout(.50))
 	model.add(Dense(1, activation='sigmoid'))
 	# compile model
 	opt = SGD(lr=0.001, momentum=0.9)
@@ -70,10 +81,10 @@ def run_test_harness():
 	test_it = test_datagen.flow_from_directory('/Users/mariamorales/Documents/Capstome_Projext/MDCP/dogs-vs-catstest1',
 		class_mode='binary', batch_size=64, target_size=(200, 200))
 
-		
+
 	# fit model
 	history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
-		validation_data=test_it, validation_steps=len(test_it), epochs=20, verbose=0)
+		validation_data=test_it, validation_steps=len(test_it), epochs=25, verbose=0)
 	# evaluate model
 	_, acc = model.evaluate_generator(test_it, steps=len(test_it), verbose=0)
 	print('> %.3f' % (acc * 100.0))
