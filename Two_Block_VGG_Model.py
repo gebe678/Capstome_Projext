@@ -1,3 +1,4 @@
+# Two Block VGG Model
 
 # baseline model for the dogs vs cats dataset
 import sys
@@ -11,12 +12,18 @@ from keras.layers import Flatten
 from keras.optimizers import SGD
 from keras.preprocessing.image import ImageDataGenerator
 
-
 # define cnn model
 def define_model():
 	model = Sequential()
+    
 	model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same', input_shape=(200, 200, 3)))
 	model.add(MaxPooling2D((2, 2)))
+    
+    # added lines of code to transform the model from a one block to two block model
+	model.add(Conv2D(64, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
+	model.add(MaxPooling2D((2, 2)))
+    # End of the code block to transofrm the model from the one block to the two block model
+    
 	model.add(Flatten())
 	model.add(Dense(128, activation='relu', kernel_initializer='he_uniform'))
 	model.add(Dense(1, activation='sigmoid'))
@@ -24,7 +31,7 @@ def define_model():
 	opt = SGD(lr=0.001, momentum=0.9)
 	model.compile(optimizer=opt, loss='binary_crossentropy', metrics=['accuracy'])
 	return model
-
+ 
 # plot diagnostic learning curves
 def summarize_diagnostics(history):
 	# plot loss
@@ -41,7 +48,7 @@ def summarize_diagnostics(history):
 	filename = sys.argv[0].split('/')[-1]
 	pyplot.savefig(filename + '_plot.png')
 	pyplot.close()
-
+ 
 # run the test harness for evaluating a model
 def run_test_harness():
 	# define model
@@ -49,12 +56,12 @@ def run_test_harness():
 	# create data generator
 	datagen = ImageDataGenerator(rescale=1.0/255.0)
 	# prepare iterators
-	train_it = datagen.flow_from_directory('C:/Users/warri/Desktop/Capstone/Capstome_Projext/dogs-vs-catstrain/',
+	train_it = datagen.flow_from_directory('dataset_dogs_vs_cats/train/',
 		class_mode='binary', batch_size=64, target_size=(200, 200))
-	test_it = datagen.flow_from_directory('C:/Users/warri/Desktop/Capstone/Capstome_Projext/dogs-vs-catstest/',
+	test_it = datagen.flow_from_directory('dataset_dogs_vs_cats/test/',
 		class_mode='binary', batch_size=64, target_size=(200, 200))
 	# fit model
-	history = model.fit(train_it, steps_per_epoch=len(train_it),
+	history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
 		validation_data=test_it, validation_steps=len(test_it), epochs=20, verbose=0)
 	# evaluate model
 	_, acc = model.evaluate_generator(test_it, steps=len(test_it), verbose=0)
@@ -64,7 +71,3 @@ def run_test_harness():
  
 # entry point, run the test harness
 run_test_harness()
-
-
-
-
