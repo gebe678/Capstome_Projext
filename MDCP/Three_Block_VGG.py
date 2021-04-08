@@ -48,13 +48,29 @@ def summarize_diagnostics(history):
 def run_test_harness():
 	# define model
 	model = define_model()
-	# create data generator
-	datagen = ImageDataGenerator(rescale=1.0/255.0)
-	# prepare iterators
-	train_it = datagen.flow_from_directory('dataset_dogs_vs_cats/train/',
+
+
+	# IMAGE GENERATION
+	# ---------------------------
+	# create two data generators
+	# One generator will be for the *Augmented* training data in order to add noise to the images
+	# Other image data generator will be for test data and will not be augmented
+
+	# Small width and height chances of 15% and include random horizontal flips
+	# Augmentation will help the model focus on individual features independent of position and other nearby pixels
+	test_datagen = ImageDataGenerator(rescale=1.0/255.0, width_shift_range=0.15, height_shift_range=0.15, 
+		horizontal_flip = True)
+	train_datagen = ImageDataGenerator(rescale=1.0/255.0)
+
+
+	# Generate batches of data for training and test sets
+	# Iterate through the images in the dogs-vs-catstrain and dogs-vs-catstest1 directories
+	train_it = train_datagen.flow_from_directory('/Users/mariamorales/Documents/Capstome_Projext/MDCP/dogs-vs-catstrain',
 		class_mode='binary', batch_size=64, target_size=(200, 200))
-	test_it = datagen.flow_from_directory('dataset_dogs_vs_cats/test/',
+	test_it = test_datagen.flow_from_directory('/Users/mariamorales/Documents/Capstome_Projext/MDCP/dogs-vs-catstest1',
 		class_mode='binary', batch_size=64, target_size=(200, 200))
+
+		
 	# fit model
 	history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
 		validation_data=test_it, validation_steps=len(test_it), epochs=20, verbose=0)
