@@ -9,6 +9,7 @@ from keras.layers import Dense
 from keras.layers import Flatten
 from keras.optimizers import SGD
 from keras.preprocessing.image import ImageDataGenerator
+from keras.layers import Dropout
 
 # define cnn model
 def define_model():
@@ -20,7 +21,7 @@ def define_model():
 
 	model.add(Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same', input_shape=(200, 200, 3)))
 	model.add(MaxPooling2D((2, 2)))
-	# Dropout occurs at the end of each layer except the output player to prevent overfitting
+	# Dropout occurs at the end of each layer except the output layer to prevent overfitting
 	# Basically, 10% of neurons will be dropped out from both the forward and backward phase
 	# This prevents neurons from learning based on context and their position around other neurons
 	model.add(Dropout(.10))
@@ -82,9 +83,9 @@ def run_test_harness():
 
 	# Generate batches of data for training and test sets
 	# Iterate through the images in the dogs-vs-catstrain and dogs-vs-catstest1 directories
-	train_it = train_datagen.flow_from_directory('/Users/mariamorales/Documents/Capstome_Projext/MDCP/dogs-vs-catstrain',
+	train_it = train_datagen.flow_from_directory('/Users/mariamorales/Documents/Capstome_Projext/MDCP/dogs-vs-catstrain/',
 		class_mode='binary', batch_size=64, target_size=(200, 200))
-	test_it = test_datagen.flow_from_directory('/Users/mariamorales/Documents/Capstome_Projext/MDCP/dogs-vs-catstest1',
+	test_it = test_datagen.flow_from_directory('/Users/mariamorales/Documents/Capstome_Projext/MDCP/dogs-vs-catstest1/',
 		class_mode='binary', batch_size=64, target_size=(200, 200))
 
 
