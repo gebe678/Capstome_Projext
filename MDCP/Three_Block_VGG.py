@@ -78,11 +78,11 @@ def define_model():
   
   
   model.add(Dense(1, activation='sigmoid'))
-  # We now use the Adam optimizer which is a stochastic gradient descent method
-  # that performs well when given large amounts of data
+  # Perform stochastic gradient descent in the backpropagation phase
   # Use a learning rate 0.001 which is basically how much the model will be changed
   # in response to error each time weights are updated after a pass through the model
-  default_opt = Adam(learning_rate=0.001)
+  # Momentum of 0.9 is the speed of backpropagation
+   opt = SGD(lr=0.001, momentum=0.9)
   # Compile will configure the model for training by setting its optimizer for stochastic
   # gradient descent which is default_opt
   # 2nd arg is the loss function which is binary_cross entropy
@@ -91,7 +91,7 @@ def define_model():
   # adjust during backpropagation
   # The cross entropy function is binary since we are deciding between 2 classes, cats vs dogs
   # metrics indicates that we are focusing on accuracy of the model as our main metric of interest
-  model.compile(optimizer=default_opt, loss='binary_crossentropy', metrics=['accuracy'])
+  model.compile(optimizer=opt, loss='binary_crossentropy', metrics=['accuracy'])
   return model
 
 # plot the learning curves using summarize_diagnostics given the history of a pass through the network
