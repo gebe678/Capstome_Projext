@@ -1,4 +1,9 @@
+################################################
 
+# final_sub.py organizes the subdirectories of data for the final model
+# Jacob Buckelew, Jenny Goldsher, Griffin Lehrer, Maria Morales
+
+################################################
 # organize dataset into a useful structure
 from os import makedirs
 from os import listdir

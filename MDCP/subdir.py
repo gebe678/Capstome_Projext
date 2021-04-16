@@ -1,3 +1,9 @@
+##########################################################
+
+# Subdir.py Organizes the subdirectories of training and test data located in the MDCP directory
+# Jacob Buckelew, Jenny Goldsher, Griffin Lehrer, Maria Morales
+
+##########################################################
 import os
 import random
 # importing shutil module 

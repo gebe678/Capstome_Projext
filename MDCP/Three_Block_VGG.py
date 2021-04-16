@@ -3,6 +3,7 @@
 # 3-Block VGG Model using Keras
 # Adapted from a tutorial by Jason Brownlee
 # https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-to-classify-photos-of-dogs-and-cats/
+# Jacob Buckelew, Jenny Goldsher, Griffin Lehrer, Maria Morales
 
 
 #####################################
